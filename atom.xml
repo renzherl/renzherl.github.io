@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://renzherl.github.io/"/>
-  <updated>2017-02-17T05:48:09.373Z</updated>
+  <updated>2017-02-20T07:12:06.642Z</updated>
   <id>http://renzherl.github.io/</id>
   
   <author>
@@ -16,11 +16,38 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Angular2 gotchas Double binding within Form</title>
+    <link href="http://renzherl.github.io/2017/02/20/Angular2-Form/"/>
+    <id>http://renzherl.github.io/2017/02/20/Angular2-Form/</id>
+    <published>2017-02-20T06:37:37.131Z</published>
+    <updated>2017-02-20T07:12:06.642Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Version"><a href="#Version" class="headerlink" title="Version"></a>Version</h3><p>Angular2 RC4 RC5;</p>
+<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h3><p>Double binding with form willnot work if you do not have a unique name property.<br>For example, you have anngFor to display all the element as a input inside a form withdouble binding, all input elements will have the same value.</p>
+<h3 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h3><p><a href="http://plnkr.co/edit/WQkyCWPzWBhVuQWUpOLC?p=preview" target="_blank" rel="external">Plunker link</a></p>
+<p><img src="/images/angular2-form.png" alt="example image" title="An exemplary image"></p>
+<p>Reason is all the input elements have the same nameproperty,<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> [(<span class="attr">ngModel</span>)]=<span class="string">"hero.name"</span><span class="attr">placeholder</span>=<span class="string">"name"</span> <span class="attr">name</span>=<span class="string">"name"</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution 1:"></a>Solution 1:</h3><p>You can simply delete form</p>
+<h3 id="Soulution-2"><a href="#Soulution-2" class="headerlink" title="Soulution 2:"></a>Soulution 2:</h3><p>One-way binding instead of double binding<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">value</span>=<span class="string">&#123;&#123;hero.name&#125;&#125;</span> <span class="attr">placeholder</span>=<span class="string">"name"</span> <span class="attr">name</span>=<span class="string">"name"</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="Soulution-3"><a href="#Soulution-3" class="headerlink" title="Soulution 3:"></a>Soulution 3:</h3><p>Double binding with unique name property, try it on <a href="http://plnkr.co/edit/tczfSIofipf6wcCeokNH?p=preview" target="_blank" rel="external">Plunker</a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">label</span>&gt;</span>id:<span class="tag">&lt;/<span class="name">label</span>&gt;</span>&#123;&#123;hero.id&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;<span class="name">div*ngFor="let</span> <span class="attr">hero</span> <span class="attr">of</span> <span class="attr">heroes</span>; <span class="attr">let</span> <span class="attr">idx</span>=<span class="string">index</span>"&gt;</span>  </div><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">"white-space:pre"</span>&gt;</span>    <span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">label</span>&gt;</span>name:<span class="tag">&lt;/<span class="name">label</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">"white-space:pre"</span>&gt;</span>    <span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">input[(ngModel)]="hero.name"</span> <span class="attr">placeholder</span>=<span class="string">"name"</span> <span class="attr">name</span>=<span class="string">"name_&#123;&#123;idx&#125;&#125;"</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Version&quot;&gt;&lt;a href=&quot;#Version&quot; class=&quot;headerlink&quot; title=&quot;Version&quot;&gt;&lt;/a&gt;Version&lt;/h3&gt;&lt;p&gt;Angular2 RC4 RC5;&lt;/p&gt;
+&lt;h3 id=&quot;Problem&quot;&gt;&lt;a href=&quot;#P
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Hello World</title>
     <link href="http://renzherl.github.io/2017/02/17/hello-world/"/>
     <id>http://renzherl.github.io/2017/02/17/hello-world/</id>
     <published>2017-02-17T05:48:09.370Z</published>
-    <updated>2017-02-17T05:48:09.373Z</updated>
+    <updated>2017-02-20T06:36:46.233Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
